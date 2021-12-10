@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 07:39 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Dec 10, 2021 at 03:26 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `soryuDatabase`
+-- Database: `soryudatabase`
 --
 
 -- --------------------------------------------------------
@@ -35,6 +35,14 @@ CREATE TABLE `cart` (
   `qty` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `client_ip`, `user_id`, `product_id`, `qty`) VALUES
+(20, '', 3, 4, 1),
+(21, '', 3, 11, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +58,14 @@ CREATE TABLE `orders` (
   `status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `address`, `mobile`, `email`, `status`) VALUES
+(7, 'fahmi Al', 'Lot 1', '013485439', 'fahmi@yes.my', 1),
+(8, 'Test Test', 'Lot', '0123', 'gg@yes.my', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +78,16 @@ CREATE TABLE `order_list` (
   `product_id` int(30) NOT NULL,
   `qty` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_list`
+--
+
+INSERT INTO `order_list` (`id`, `order_id`, `product_id`, `qty`) VALUES
+(11, 7, 6, 1),
+(12, 7, 8, 1),
+(13, 8, 11, 1),
+(14, 8, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -90,9 +116,7 @@ INSERT INTO `product_list` (`id`, `name`, `description`, `price`, `img_path`, `s
 (8, 'Teabeng Forza Antartica', 'Teabeng fresh yang dibuat daripada duan teh import', 5, '1638966840_Tea-Beng.jpg', 1),
 (9, 'Cafe Favrito Espresso', 'Kopi ini diperbuat daripada biji kopi yang berkualiti tinggi yang diimport dari Bosnia. Kopi ini disaluti dengan rasa pahit dan manis.', 5, '1638966960_Kopi.jpg', 1),
 (10, 'Ricardo Aglio Olio', 'Kind of shagetti from mexican that been verified by Mexico.', 10, '1638967020_Mee.jpg', 1),
-(11, 'Mc Flurry Costa', 'The ice cream is from Mc Donald. We are having a partnership with them. It is fresh ice cream. ', 5, '1638967260_McFlurry.jpg', 1),
-(13, 'test', 'test menu', 1, '1638987720_Screenshot (5).png', 1),
-(14, 'test1', 'test menu plok', 2, '1638988080_Screenshot (4).png', 1);
+(11, 'Mc Flurry Costa', 'The ice cream is from Mc Donald. We are having a partnership with them. It is fresh ice cream. ', 5, '1638967260_McFlurry.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -158,7 +182,10 @@ CREATE TABLE `user_info` (
 --
 
 INSERT INTO `user_info` (`user_id`, `first_name`, `last_name`, `email`, `password`, `mobile`, `address`) VALUES
-(2, 'Muhd', 'Faiz', 'zxc@yes.my', '5fa72358f0b4fb4f2c5d7de8c9a41846', '0123455685', 'Lot 1354');
+(2, 'Muhd', 'Faiz', 'zxc@yes.my', '5fa72358f0b4fb4f2c5d7de8c9a41846', '0123455685', 'Lot 1354'),
+(3, 'fahmi', 'Al', 'fahmi@yes.my', 'f11d50d63d3891a44c332e46d6d7d561', '013485439', 'Lot 1'),
+(4, 'Muhd', 'Faiiiz', 'hai@yes.my', '42810cb02db3bb2cbb428af0d8b0376e', '0123456', 'Lot 1345'),
+(5, 'Test', 'Test', 'gg@yes.my', '73c18c59a39b18382081ec00bb456d43', '0123', 'Lot');
 
 --
 -- Indexes for dumped tables
@@ -214,19 +241,19 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_list`
@@ -250,7 +277,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
